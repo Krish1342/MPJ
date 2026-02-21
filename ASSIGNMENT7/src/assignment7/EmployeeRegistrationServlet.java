@@ -26,7 +26,7 @@ public class EmployeeRegistrationServlet extends HttpServlet {
         String query = "INSERT INTO employees(name, email, department, salary) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DBConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, employee.getName());
             preparedStatement.setString(2, employee.getEmail());

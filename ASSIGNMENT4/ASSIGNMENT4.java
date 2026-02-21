@@ -89,10 +89,10 @@ public class ASSIGNMENT4 {
         System.out.println("*** ASSIGNMENT 4: POLYMORPHISM WITH SHAPES ***\n");
 
         Shape[] shapes = {
-            new Circle(7),
-            new Rectangle(10, 5),
-            new Triangle(8, 6),
-            new Rectangle(4)
+                new Circle(7),
+                new Rectangle(10, 5),
+                new Triangle(8, 6),
+                new Rectangle(4)
         };
 
         System.out.println("Runtime Polymorphism:");
