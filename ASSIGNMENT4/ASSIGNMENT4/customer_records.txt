@@ -1,0 +1,2 @@
+cid,cname,amount
+5,alice,55000.00

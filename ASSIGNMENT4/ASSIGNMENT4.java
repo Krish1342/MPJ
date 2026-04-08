@@ -1,4 +1,4 @@
-package HelloWorld;
+// package HelloWorld;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -81,6 +81,9 @@ class BankingSystem {
         if (amount < MIN_BALANCE) {
             throw new MinimumBalanceException("Account should be created with minimum Rs. 1000.");
         }
+        if (customers.containsKey(cid)) {
+            throw new InvalidCustomerIdException("Customer with cid " + cid + " already exists.");
+        }
         customers.put(cid, new Customer(cid, cname, amount));
         writeAllCustomersToFile();
     }
@@ -131,12 +134,19 @@ class BankingSystem {
     }
 
     private void writeAllCustomersToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, false))) {
-            writer.write("cid,cname,amount");
-            writer.newLine();
-            for (Customer customer : customers.values()) {
-                writer.write(customer.toRecord());
+        try {
+            // Create directory if it doesn't exist
+            if (outputFile.getParentFile() != null && !outputFile.getParentFile().exists()) {
+                outputFile.getParentFile().mkdirs();
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, false))) {
+                writer.write("cid,cname,amount");
                 writer.newLine();
+                for (Customer customer : customers.values()) {
+                    writer.write(customer.toRecord());
+                    writer.newLine();
+                }
             }
         } catch (IOException exception) {
             System.out.println("File write error: " + exception.getMessage());

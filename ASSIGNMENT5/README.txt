@@ -11,11 +11,11 @@ Folder structure:
 Requirements:
 1. Java JDK 8+
 2. Apache Tomcat (or compatible servlet container)
-3. MySQL Server
-4. MySQL JDBC Driver in Tomcat/lib
+3. SQLite JDBC Driver in Tomcat/lib
 
 Setup steps:
-1. Run sql/employee_table.sql in MySQL.
-2. Update DB credentials in src/assignment5/DBConnection.java.
-3. Deploy this web app to Tomcat.
-4. Open employee-registration.jsp through Tomcat.
+1. Keep SQLite database file access enabled (mpj.db will be created automatically).
+2. Place sqlite-jdbc jar in Tomcat/lib.
+3. (Optional) Run sql/employee_table.sql in SQLite CLI.
+4. Deploy this web app to Tomcat.
+5. Open employee-registration.jsp through Tomcat.
